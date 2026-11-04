@@ -13,9 +13,17 @@ A simple, responsive ERP dashboard built with Express and React. It includes:
 ```bash
 npm install
 cd client && npm install && cd ..
-npm run dev
+MONGODB_URI=mongodb://127.0.0.1:27017/orbit_erp npm run dev
 ```
 
 The React app runs at `http://localhost:5173` and the API runs at `http://localhost:4000`.
 
-The sample data is held in memory for simplicity. Restarting the API resets changes.
+The API persists products, employees, and invoices in MongoDB. If the collections are empty, the API seeds the sample records on first startup.
+
+For MongoDB Atlas, set `MONGODB_URI` to your Atlas connection string before starting the API:
+
+```bash
+MONGODB_URI="mongodb+srv://<user>:<password>@<cluster>/orbit_erp" npm run server
+```
+
+Copy `.env.example` to `.env` if you prefer to keep the connection string in a local environment file.
